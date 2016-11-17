@@ -1,23 +1,17 @@
-version: 0.0
+version: 0.1
 
-containers:
-  main:
-    phases:
-      pre_build:
-        commands:
-          - echo Entering pre_build phase...
-      during_build:
-        commands:
-          - echo Entering during_build phase...
-          - mvn test
-          - mvn package 
-      post_build:
-        commands:
-          - echo Entering post_build phase...
-          - ls
-    artifacts:
-      type: zip
-      files:
-        - target/my-app-1.0-SNAPSHOT.jar
-        - appspec.yml
-      discard-paths: yes
+phases:
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn test 
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - mvn package
+artifacts:
+  type: zip
+  files:
+    - target/my-app-1.0-SNAPSHOT.jar
+    - appspec.yml
+  discard-paths: yes
