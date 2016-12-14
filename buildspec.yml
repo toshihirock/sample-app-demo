@@ -6,7 +6,7 @@ phases:
       - echo Build started on `date`
       - env
       - aws --version
-      - curl http://169.254.169.254/latest/meta-data/iam/security-credentials/
+      - aws s3 ls
       - mvn test 
   post_build:
     commands:
