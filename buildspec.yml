@@ -6,7 +6,7 @@ phases:
       - echo Build started on `date`
       - env
       - aws --version
-      - aws s3 ls
+      - aws s3 ls --debug
       - mvn test 
   post_build:
     commands:
